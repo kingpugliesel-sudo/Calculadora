@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Maison Auréle — perfumería de autor. Catálogo de fragancias florales, amaderadas, cítricas, orientales y frescas, elaboradas en pequeños lotes.">
+<title>AURÉLE · Perfumería de autor — Catálogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --marfil:#f7f3ec;
+    --marfil-2:#efe8dc;
+    --tinta:#1c1713;
+    --tinta-2:#3a322c;
+    --tinta-3:#6b6158;
+    --oro:#8a6d2f;
+    --oro-claro:#c5a35a;
+    --linea:rgba(28,23,19,.14);
+    --rojo:#9c3b2e;
+    --sombra:0 10px 30px rgba(28,23,19,.10);
+    --f-serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --f-sans:"Jost", "Segoe UI", Verdana, sans-serif;
+    --esp-1:4px; --esp-2:8px; --esp-3:12px; --esp-4:16px; --esp-5:24px;
+    --esp-6:32px; --esp-7:48px; --esp-8:64px; --esp-9:96px;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:var(--f-sans);
+    font-weight:300;
+    background:var(--marfil);
+    color:var(--tinta-2);
+    line-height:1.65;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font:inherit; cursor:pointer; background:none; border:none; color:inherit; }
+  :focus-visible{ outline:2px solid var(--oro); outline-offset:3px; border-radius:2px; }
+
+  .contenedor{ width:min(1180px, 92%); margin-inline:auto; }
+  .sr-solo{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+  }
+
+  /* ---------- tipografía de sección ---------- */
+  .ceja{
+    display:inline-block;
+    font-size:11px; font-weight:500;
+    letter-spacing:.24em; text-transform:uppercase;
+    color:var(--oro);
+    margin-bottom:var(--esp-4);
+  }
+  h1,h2,h3,.display{ font-family:var(--f-serif); color:var(--tinta); font-weight:400; line-height:1.12; }
+  h2{ font-size:clamp(30px, 4vw, 44px); }
+  .sub{ color:var(--tinta-3); max-width:56ch; }
+
+  /* ---------- botones ---------- */
+  .boton{
+    display:inline-flex; align-items:center; justify-content:center; gap:.5em;
+    font-size:12px; font-weight:500;
+    letter-spacing:.16em; text-transform:uppercase;
+    padding:15px 26px;
+    border-radius:2px;
+    border:1px solid var(--tinta);
+    background:var(--tinta); color:var(--marfil);
+    transition:background-color .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .boton:hover{ background:#31281f; border-color:#31281f; }
+  .boton-linea{ background:transparent; color:var(--tinta); }
+  .boton-linea:hover{ background:var(--tinta); color:var(--marfil); }
+  .boton:active{ transform:translateY(1px); }
+  .boton[disabled]{ opacity:.45; cursor:not-allowed; }
+
+  /* ============ barra de anuncios ============ */
+  .anuncio{
+    background:var(--tinta); color:var(--marfil);
+    text-align:center; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    padding:10px var(--esp-4);
+  }
+  .anuncio b{ font-weight:500; color:var(--oro-claro); }
+
+  /* ============ cabecera ============ */
+  .cabecera{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,243,236,.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--linea);
+    transition:box-shadow .3s ease;
+  }
+  .cabecera.sombra{ box-shadow:0 6px 18px rgba(28,23,19,.08); }
+  .cabecera .fila{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 0; gap:var(--esp-4);
+  }
+  .marca{ display:flex; flex-direction:column; line-height:1.05; }
+  .marca .nombre{
+    font-family:var(--f-serif); font-size:26px; font-weight:500;
+    letter-spacing:.18em; color:var(--tinta);
+  }
+  .marca .eslogan{
+    font-size:10px; letter-spacing:.32em; text-transform:uppercase; color:var(--oro);
+    margin-top:2px;
+  }
+  .nav-principal{ display:flex; gap:var(--esp-6); }
+  .nav-principal a{
+    font-size:12px; font-weight:400; letter-spacing:.18em; text-transform:uppercase;
+    padding:6px 2px; position:relative;
+  }
+  .nav-principal a::after{
+    content:""; position:absolute; left:0; bottom:0; height:1px; width:0;
+    background:var(--oro); transition:width .25s ease;
+  }
+  .nav-principal a:hover::after{ width:100%; }
+  .carrito-btn{ position:relative; display:flex; align-items:center; gap:8px; padding:6px; border-radius:2px; }
+  .carrito-btn svg{ width:20px; height:20px; }
+  .carrito-btn .contador{
+    position:absolute; top:-4px; right:-6px;
+    min-width:18px; height:18px; padding:0 4px;
+    background:var(--oro); color:var(--marfil);
+    border-radius:9px;
+    font-size:11px; font-weight:500; line-height:18px; text-align:center;
+  }
+  .carrito-btn .contador.oculto{ display:none; }
+
+  /* ============ héroe ============ */
+  .heroe{ padding:var(--esp-9) 0 var(--esp-8); overflow:hidden; }
+  .heroe .rejilla{
+    display:grid; grid-template-columns:1.05fr .95fr; gap:var(--esp-8); align-items:center;
+  }
+  .heroe h1{ font-size:clamp(44px, 6vw, 78px); font-weight:300; }
+  .heroe h1 em{ font-style:italic; font-weight:400; color:var(--oro); }
+  .heroe p.entrada{ margin-top:var(--esp-5); max-width:52ch; font-size:17px; color:var(--tinta-2); }
+  .heroe .acciones{ display:flex; gap:var(--esp-4); margin-top:var(--esp-6); flex-wrap:wrap; }
+  .heroe .datos{ display:flex; gap:var(--esp-7); margin-top:var(--esp-8); }
+  .heroe .datos div{ border-left:1px solid var(--linea); padding-left:var(--esp-4); }
+  .heroe .datos .num{ font-family:var(--f-serif); font-size:26px; color:var(--tinta); }
+  .heroe .datos .dato{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--tinta-3); }
+
+  .arte-hero{ position:relative; height:460px; }
+  .aura{
+    position:absolute; inset:-40px 0 0 0; border-radius:50%;
+    background:radial-gradient(closest-side, #efe3cd 0%, rgba(239,227,205,0) 72%);
+  }
+  .aro{
+    position:absolute; inset:8% 6%;
+    border:1px solid rgba(138,109,47,.35); border-radius:50%;
+  }
+  .frasco-heroe{ position:absolute; bottom:0; transition:transform .5s ease; }
+  .frasco-heroe svg{ height:100%; width:auto; }
+  .marco-casa svg{ height:100%; width:auto; }
+  .frasco-heroe:hover{ transform:translateY(-8px); }
+  .especia{ position:absolute; width:5px; height:5px; border-radius:50%; background:var(--oro-claro); opacity:.55; }
+
+  /* ============ franja de valores ============ */
+  .valores{
+    border-block:1px solid var(--linea);
+    background:var(--marfil-2);
+  }
+  .valores ul{
+    list-style:none;
+    display:grid; grid-template-columns:repeat(4, 1fr);
+    width:min(1180px,92%); margin-inline:auto;
+  }
+  .valores li{
+    display:flex; align-items:center; gap:var(--esp-3);
+    padding:var(--esp-4) var(--esp-3);
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--tinta-2);
+  }
+  .valores li + li{ border-left:1px solid var(--linea); }
+  .valores svg{ width:18px; height:18px; color:var(--oro); flex:none; }
+
+  /* ============ colección / catálogo ============ */
+  .coleccion{ padding:var(--esp-9) 0; scroll-margin-top:80px; }
+  .coleccion .cabeza{
+    display:flex; align-items:flex-end; justify-content:space-between;
+    gap:var(--esp-5); flex-wrap:wrap; margin-bottom:var(--esp-6);
+  }
+  .filtros{ display:flex; gap:var(--esp-2); flex-wrap:wrap; }
+  .filtro{
+    font-size:11px; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+    padding:10px 16px; border:1px solid var(--linea); border-radius:2px;
+    color:var(--tinta-3); background:transparent;
+    transition:all .2s ease;
+  }
+  .filtro:hover{ border-color:var(--tinta); color:var(--tinta); }
+  .filtro[aria-pressed="true"]{ background:var(--tinta); border-color:var(--tinta); color:var(--marfil); }
+
+  .catalogo{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));
+    gap:var(--esp-5);
+  }
+  .vacio{ padding:var(--esp-8) 0; text-align:center; color:var(--tinta-3); font-style:italic; }
+
+  .tarjeta{
+    background:#fbf8f2;
+    border:1px solid var(--linea); border-radius:2px;
+    display:flex; flex-direction:column;
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .tarjeta:hover{ transform:translateY(-6px); box-shadow:var(--sombra); }
+  .escena{
+    position:relative; padding:var(--esp-6) var(--esp-4) var(--esp-4);
+    display:flex; justify-content:center;
+  }
+  .escena svg.frasco{ height:190px; width:auto; transition:transform .35s ease; }
+  .tarjeta:hover .escena svg.frasco{ transform:translateY(-4px) scale(1.02); }
+  .etiquetas{ position:absolute; top:12px; left:12px; display:flex; flex-direction:column; gap:6px; }
+  .etiqueta{
+    font-size:9.5px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+    background:var(--tinta); color:var(--marfil);
+    padding:5px 9px; border-radius:2px;
+  }
+  .etiqueta.oro{ background:var(--oro); }
+  .familia{
+    position:absolute; top:12px; right:12px;
+    font-size:9.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--oro);
+    border:1px solid rgba(138,109,47,.4); border-radius:2px;
+    padding:4px 8px; background:rgba(247,243,236,.8);
+  }
+  .info{ padding:0 var(--esp-5) var(--esp-5); display:flex; flex-direction:column; gap:var(--esp-3); flex:1; }
+  .info h3{ font-size:24px; font-weight:500; }
+  .info .notas{ font-size:12px; letter-spacing:.06em; color:var(--tinta-3); text-transform:uppercase; }
+  .info .resena{ font-size:14px; color:var(--tinta-2); flex:1; }
+  .valoracion{ display:flex; align-items:center; gap:6px; font-size:12px; color:var(--tinta-3); }
+  .estrellas{ display:flex; gap:1px; color:var(--oro); }
+  .estrellas svg{ width:12px; height:12px; }
+  .compra{ display:flex; flex-direction:column; gap:var(--esp-3); }
+  .tamanos{ display:flex; gap:6px; }
+  .tamano{
+    flex:1; padding:8px 0; font-size:11px; font-weight:500; letter-spacing:.08em;
+    border:1px solid var(--linea); border-radius:2px; color:var(--tinta-3);
+    transition:all .2s ease;
+  }
+  .tamano:hover{ border-color:var(--tinta); color:var(--tinta); }
+  .tamano[aria-pressed="true"]{ background:var(--tinta); border-color:var(--tinta); color:var(--marfil); }
+  .linea-precio{ display:flex; align-items:baseline; justify-content:space-between; }
+  .precio{ font-size:20px; font-weight:500; color:var(--tinta); }
+  .toml{ font-size:11px; letter-spacing:.1em; color:var(--tinta-3); text-transform:uppercase; }
+  .añadir{ width:100%; }
+
+  /* ============ nuestra casa ============ */
+  .casa{ background:var(--tinta); color:#cfc6ba; padding:var(--esp-9) 0; }
+  .casa .rejilla{ display:grid; grid-template-columns:1fr 1fr; gap:var(--esp-8); align-items:center; }
+  .casa .ceja{ color:var(--oro-claro); }
+  .casa h2{ color:var(--marfil); }
+  .casa p{ max-width:52ch; }
+  .casa .frase{
+    font-family:var(--f-serif); font-style:italic;
+    font-size:clamp(20px, 2.4vw, 26px); color:var(--marfil);
+    border-left:2px solid var(--oro); padding-left:var(--esp-5); margin-top:var(--esp-6);
+  }
+  .casa .lista-valores{ margin-top:var(--esp-6); display:grid; grid-template-columns:1fr 1fr; gap:var(--esp-3) var(--esp-5); }
+  .casa .lista-valores div{ display:flex; gap:10px; align-items:flex-start; font-size:14px; }
+  .casa .lista-valores svg{ width:16px; height:16px; color:var(--oro-claro); flex:none; margin-top:3px; }
+  .arte-casa{ position:relative; display:flex; justify-content:center; }
+  .marco-casa{
+    border:1px solid rgba(197,163,90,.35); border-radius:2px;
+    padding:var(--esp-8) var(--esp-7); position:relative;
+  }
+  .esquina{ position:absolute; width:14px; height:14px; border-color:var(--oro-claro); border-style:solid; }
+  .esquina.tl{ top:-1px; left:-1px; border-width:1px 0 0 1px; }
+  .esquina.tr{ top:-1px; right:-1px; border-width:1px 1px 0 0; }
+  .esquina.bl{ bottom:-1px; left:-1px; border-width:0 0 1px 1px; }
+  .esquina.br{ bottom:-1px; right:-1px; border-width:0 1px 1px 0; }
+
+  /* ============ testimonios ============ */
+  .testimonios{ padding:var(--esp-9) 0; background:var(--marfil-2); }
+  .testimonios .rejilla{ display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--esp-5); margin-top:var(--esp-7); }
+  .opinion{
+    background:#fbf8f2; border:1px solid var(--linea); border-radius:2px;
+    padding:var(--esp-6); position:relative;
+  }
+  .opinion blockquote{ font-family:var(--f-serif); font-size:19px; font-style:italic; color:var(--tinta); }
+  .opinion .autor{ margin-top:var(--esp-4); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--tinta-3); display:flex; align-items:center; gap:10px; }
+  .opinion .autor::before{ content:""; width:24px; height:1px; background:var(--oro); }
+
+  /* ============ boletín ============ */
+  .boletin{ padding:var(--esp-8) 0; text-align:center; }
+  .boletin .sub{ margin:0 auto; }
+  .boletin form{
+    display:flex; gap:var(--esp-3); max-width:440px; margin:var(--esp-6) auto 0;
+  }
+  .boletin input{
+    flex:1; padding:14px 16px; font:inherit; font-size:14px;
+    background:#fbf8f2; border:1px solid var(--linea); border-radius:2px; color:var(--tinta);
+  }
+  .boletin input::placeholder{ color:var(--tinta-3); }
+  .confirmacion{ margin-top:var(--esp-4); color:var(--oro); font-size:14px; letter-spacing:.04em; min-height:1.5em; }
+
+  /* ============ pie ============ */
+  .pie{ background:var(--tinta); color:#a89c8f; padding:var(--esp-8) 0 var(--esp-5); }
+  .pie .rejilla{ display:grid; grid-template-columns:2fr 1fr 1fr 1.2fr; gap:var(--esp-7); }
+  .pie h4{
+    font-family:var(--f-sans); font-size:11px; font-weight:500;
+    letter-spacing:.22em; text-transform:uppercase; color:var(--oro-claro);
+    margin-bottom:var(--esp-4);
+  }
+  .pie ul{ list-style:none; display:grid; gap:10px; font-size:14px; }
+  .pie a:hover{ color:var(--marfil); }
+  .pie .marca .nombre{ color:var(--marfil); }
+  .pie .marca .eslogan{ color:var(--oro-claro); }
+  .pie .bloque{ margin-top:var(--esp-4); font-size:13px; }
+  .pagos{ margin-top:var(--esp-6); border-top:1px solid rgba(247,243,236,.12); padding-top:var(--esp-5); }
+  .pagos .fila{ display:flex; align-items:center; justify-content:space-between; gap:var(--esp-4); flex-wrap:wrap; font-size:12px; letter-spacing:.08em; }
+
+  /* ============ cajón del carrito ============ */
+  .velo{
+    position:fixed; inset:0; background:rgba(20,15,10,.45); z-index:80;
+    opacity:0; pointer-events:none; transition:opacity .3s ease;
+  }
+  .velo.visible{ opacity:1; pointer-events:auto; }
+  .cajon-carrito{
+    position:fixed; top:0; right:0; bottom:0; width:min(400px, 94vw); z-index:90;
+    background:var(--marfil); border-left:1px solid var(--linea);
+    transform:translateX(102%); transition:transform .35s cubic-bezier(.2,.7,.2,1);
+    display:flex; flex-direction:column;
+  }
+  .cajon-carrito.abierto{ transform:none; }
+  .cajon-cabeza{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:var(--esp-5); border-bottom:1px solid var(--linea);
+  }
+  .cajon-cabeza h2{ font-size:26px; }
+  .cerrar{ padding:6px; border-radius:2px; }
+  .cerrar svg{ width:20px; height:20px; }
+  .envio-meta{ padding:var(--esp-4) var(--esp-5); border-bottom:1px solid var(--linea); font-size:12px; letter-spacing:.06em; color:var(--tinta-3); }
+  .barra{ margin-top:8px; height:2px; background:var(--marfil-2); border-radius:1px; overflow:hidden; }
+  .barra i{ display:block; height:100%; background:var(--oro); transition:width .4s ease; }
+  .articulos{ list-style:none; flex:1; overflow-y:auto; padding:var(--esp-4) var(--esp-5); }
+  .articulo{ display:flex; gap:var(--esp-4); padding:var(--esp-4) 0; border-bottom:1px solid var(--linea); }
+  .articulo .mini{ width:56px; height:96px; flex:none; background:var(--marfil-2); border-radius:2px; padding:2px; }
+  .articulo .mini svg{ height:100%; width:100%; }
+  .articulo .datos{ flex:1; }
+  .articulo .nombre{ font-family:var(--f-serif); font-size:18px; color:var(--tinta); }
+  .articulo .variante{ font-size:12px; color:var(--tinta-3); }
+  .articulo .controles{ display:flex; align-items:center; gap:12px; margin-top:8px; }
+  .cantidad{ display:flex; align-items:center; border:1px solid var(--linea); border-radius:2px; }
+  .cantidad button{ width:28px; height:28px; font-size:14px; }
+  .cantidad span{ min-width:26px; text-align:center; font-size:13px; }
+  .quitar{ font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--tinta-3); text-decoration:underline; text-underline-offset:3px; }
+  .quitar:hover{ color:var(--rojo); }
+  .articulo .importe{ font-weight:500; color:var(--tinta); white-space:nowrap; }
+  .cajon-pie{ padding:var(--esp-5); border-top:1px solid var(--linea); }
+  .total{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:var(--esp-4); }
+  .total b{ font-family:var(--f-serif); font-size:24px; font-weight:500; color:var(--tinta); }
+  .notita{ margin-top:10px; font-size:11.5px; color:var(--tinta-3); letter-spacing:.06em; }
+
+  /* ============ ficha (modal) ============ */
+  .ficha{
+    position:fixed; inset:0; z-index:100;
+    display:grid; place-items:center; padding:var(--esp-4);
+    background:rgba(20,15,10,.5);
+    opacity:0; pointer-events:none; transition:opacity .3s ease;
+  }
+  .ficha.visible{ opacity:1; pointer-events:auto; }
+  .ficha .hoja{
+    background:var(--marfil); border-radius:2px; max-width:860px; width:100%;
+    max-height:92vh; overflow-y:auto;
+    display:grid; grid-template-columns:0.85fr 1.15fr;
+    transform:translateY(14px); transition:transform .3s ease;
+    border:1px solid var(--linea);
+  }
+  .ficha.visible .hoja{ transform:none; }
+  .ficha-escena{
+    background:var(--marfil-2); display:grid; place-items:center; padding:var(--esp-7);
+    position:relative; min-height:420px;
+  }
+  .ficha-escena svg{ height:320px; }
+  .ficha-datos{ padding:var(--esp-7) var(--esp-7) var(--esp-8); display:flex; flex-direction:column; gap:var(--esp-4); }
+  .ficha-cerrar{ position:absolute; top:10px; right:10px; padding:8px; background:rgba(247,243,236,.9); border-radius:2px; }
+  .ficha-cerrar svg{ width:16px; height:16px; }
+  .ficha-datos h2{ font-size:34px; }
+  .piramide{ display:grid; gap:var(--esp-3); margin-top:var(--esp-2); }
+  .piramide .paso{ display:grid; grid-template-columns:96px 1fr; gap:var(--esp-4); align-items:baseline; padding:var(--esp-2) 0; border-bottom:1px solid var(--linea); }
+  .piramide .paso dt{ font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--oro); }
+  .piramide .paso dd{ font-size:14.5px; color:var(--tinta-2); }
+  .ficha-meta{ display:flex; gap:var(--esp-5); font-size:12px; letter-spacing:.08em; color:var(--tinta-3); text-transform:uppercase; flex-wrap:wrap; }
+  .ficha-precio{ display:flex; align-items:center; gap:var(--esp-4); }
+  .sel-tamanos{ display:flex; gap:8px; }
+  .compra-ficha{ display:flex; gap:var(--esp-3); align-items:center; margin-top:auto; }
+  .compra-ficha .precio-ficha{ font-family:var(--f-serif); font-size:30px; color:var(--tinta); }
+
+  /* ============ tostada ============ */
+  .tostada{
+    position:fixed; left:50%; bottom:28px; transform:translate(-50%, 16px);
+    background:var(--tinta); color:var(--marfil);
+    padding:14px 24px; border-radius:2px; font-size:13px; letter-spacing:.06em;
+    opacity:0; pointer-events:none; transition:all .35s ease; z-index:120;
+    box-shadow:var(--sombra);
+  }
+  .tostada.visible{ opacity:1; transform:translate(-50%, 0); }
+
+  /* ============ animaciones de aparición ============ */
+  .por-ver{ opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; }
+  .por-ver.visible{ opacity:1; transform:none; }
+
+  /* ============ responsive ============ */
+  @media (max-width: 1023px){
+    .testimonios .rejilla{ grid-template-columns:1fr 1fr; }
+    .pie .rejilla{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width: 860px){
+    .heroe .rejilla{ grid-template-columns:1fr; }
+    .arte-hero{ height:340px; order:-1; }
+    .casa .rejilla{ grid-template-columns:1fr; }
+    .ficha .hoja{ grid-template-columns:1fr; }
+    .ficha-escena{ min-height:280px; }
+    .ficha-escena svg{ height:220px; }
+    .nav-principal{ display:none; }
+  }
+  @media (max-width: 767px){
+    .testimonios .rejilla{ grid-template-columns:1fr; }
+    .valores ul{ grid-template-columns:1fr 1fr; }
+    .valores li:nth-child(3){ border-left:none; }
+    .pie .rejilla{ grid-template-columns:1fr; gap:var(--esp-6); }
+    .heroe .datos{ gap:var(--esp-5); }
+    .boletin form{ flex-direction:column; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ transition-duration:.01ms !important; animation-duration:.01ms !important; }
+    .por-ver{ opacity:1; transform:none; }
+  }
+
+  @media print{
+    .cabecera, .carrito-btn, .ficha, .cajon-carrito, .tostada, .boletin{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- gradientes compartidos para el oro de los tapones -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="oro" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a98a44"/>
+      <stop offset=".45" stop-color="#d9bd7c"/>
+      <stop offset=".65" stop-color="#8a6d2f"/>
+      <stop offset="1" stop-color="#b69150"/>
+    </linearGradient>
+    <linearGradient id="oro-suave" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c9ab68"/>
+      <stop offset="1" stop-color="#7c6128"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="anuncio">Envío gratuito a partir de <b>90 €</b> · Muestra de regalo en cada pedido · Devolución 30 días</div>
+
+<header class="cabecera" id="cabecera">
+  <div class="contenedor fila">
+    <a class="marca" href="#inicio" aria-label="AURÉLE, ir al inicio">
+      <span class="nombre">AURÉLE</span>
+      <span class="eslogan">Maison de Parfum</span>
+    </a>
+    <nav class="nav-principal" aria-label="Navegación principal">
+      <a href="#coleccion">Catálogo</a>
+      <a href="#casa">Nuestra casa</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#pie">Contacto</a>
+    </nav>
+    <button class="carrito-btn" id="abrir-carrito" aria-haspopup="dialog" aria-label="Abrir carrito de compras">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M6 8h12l-1.2 12H7.2L6 8Z" stroke-linejoin="round"/>
+        <path d="M9 8V6a3 3 0 0 1 6 0v2" stroke-linecap="round"/>
+      </svg>
+      <span class="contador oculto" id="contador-carrito" aria-live="polite">0</span>
+    </button>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- ============ héroe ============ -->
+  <section class="heroe" aria-labelledby="titulo-hero">
+    <div class="contenedor rejilla">
+      <div>
+        <span class="ceja">Perfumería de autor · Desde 1998</span>
+        <h1 id="titulo-hero">El perfume que<br>te recuerda <em>a ti</em></h1>
+        <p class="entrada">
+          En Maison Auréle compone cada fragancia una sola perfumista, con materias primas
+          que se compran en origen y pequeños lotes que envasamos a mano en nuestro
+          taller de Valencia. Sin prisa, sin fórmulas de laboratorio: el tiempo manda.
+        </p>
+        <div class="acciones">
+          <a class="boton" href="#coleccion">Explorar el catálogo</a>
+          <a class="boton boton-linea" href="#casa">Nuestra historia</a>
+        </div>
+        <div class="datos">
+          <div><span class="num">26</span><span class="dato" style="display:block">Años de oficio</span></div>
+          <div><span class="num">18</span><span class="dato" style="display:block">Fragancias de autor</span></div>
+          <div><span class="num">100%</span><span class="dato" style="display:block">Vegano y cruelty-free</span></div>
+        </div>
+      </div>
+      <div class="arte-hero" aria-hidden="true" id="arte-hero"></div>
+    </div>
+  </section>
+
+  <!-- ============ valores ============ -->
+  <section class="valores" aria-label="Nuestras garantías">
+    <ul>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21c4-3 7-6.5 7-11a5 5 0 0 0-10 0c0 4.5 3 8 3 11Z" stroke-linejoin="round"/></svg>
+        Ingredientes de origen
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3c5 3 7 7 7 11a7 7 0 0 1-14 0c0-2 1-4 2.5-6C9 6 10.5 4.6 12 3Z" stroke-linejoin="round"/></svg>
+        Envasado a mano en lotes
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h13M13 8l3 4-3 4" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 5v14" stroke-linecap="round"/></svg>
+        Envío gratuito desde 90 €
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Devolución de 30 días
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ catálogo ============ -->
+  <section class="coleccion" id="coleccion" aria-labelledby="titulo-coleccion">
+    <div class="contenedor">
+      <div class="cabeza">
+        <div>
+          <span class="ceja">La colección permanente</span>
+          <h2 id="titulo-coleccion">El catálogo</h2>
+          <p class="sub" style="margin-top:12px">
+            Ocho composiciones de larga duración. Elige el formato, lee las notas
+            y encuentra la fragancia que ya eras.
+          </p>
+        </div>
+        <div class="filtros" role="group" aria-label="Filtrar por familia olfativa" id="filtros"></div>
+      </div>
+      <div class="catalogo" id="catalogo" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============ nuestra casa ============ -->
+  <section class="casa" id="casa" aria-labelledby="titulo-casa">
+    <div class="contenedor rejilla">
+      <div>
+        <span class="ceja">Nuestra casa</span>
+        <h2 id="titulo-casa">Un atelier, una perfumista, cero atajos</h2>
+        <p style="margin-top:16px">
+          Auréle nació en 1998 en una antigua droguería del Carmen, entre estanterías
+          de madera y frascos de farmacia. Hoy seguimos en el mismo lugar: no había
+          razón para marcharse. Elena Auréle, nuestra fundadora y única perfumista,
+          compone cada fórmula sobre una mesa de cobre y prueba cada lote
+          olfativamente antes de envasarlo.
+        </p>
+        <p style="margin-top:12px">
+          Trabajamos con cultivos pequeños: rosa de Grasse, bergamota de manos
+          conocidas, ámbar madurado. Si un rendimiento no llega al que exige
+          la casa, la fragancia espera. Así de simple.
+        </p>
+        <p class="frase">«Un perfume no es una fórmula; es una memoria que todavía no has vivido.»</p>
+        <div class="lista-valores">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg>Sin filtros de márketing</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg>Fórmulas sin parabenos ni ftalatos</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg>Plantas de cultivo sostenible</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg>Lotes numerados a mano</div>
+        </div>
+      </div>
+      <div class="arte-casa" aria-hidden="true">
+        <div class="marco-casa" id="arte-casa"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ testimonios ============ -->
+  <section class="testimonios" id="opiniones" aria-labelledby="titulo-opiniones">
+    <div class="contenedor">
+      <span class="ceja">Quien lo lleva, vuelve</span>
+      <h2 id="titulo-opiniones">Lo que dicen nuestros clientes</h2>
+      <div class="rejilla">
+        <article class="opinion por-ver">
+          <blockquote>«Compré Jardín de Abril como regalo y acabó quedándose en casa. Es la primera vez que alguien me pregunta qué perfume uso… dos veces el mismo día.»</blockquote>
+          <p class="autor">Marina R. — Valencia</p>
+        </article>
+        <article class="opinion por-ver">
+          <blockquote>«Llevaba años buscando un oud que no asfixiara. Aurora Nocturna envuelve sin gritar, y dura hasta la cena. El envío llegó en 24 horas.»</blockquote>
+          <p class="autor">Carlos M. — Madrid</p>
+        </article>
+        <article class="opinion por-ver">
+          <blockquote>«La ficha con la pirámide de notas me vendió: você sabe exactamente qué va a sentir antes de abrirlo. Regalo un Auréle cada Navidad.»</blockquote>
+          <p class="autor">Lucía G. — Bilbao</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ boletín ============ -->
+  <section class="boletin" aria-labelledby="titulo-boletin">
+    <div class="contenedor">
+      <span class="ceja">Círculo Auréle</span>
+      <h2 id="titulo-boletin">Suscríbete y estrena una muestra</h2>
+      <p class="sub" style="margin-top:12px">
+        Una carta al mes: lanzamientos, lotes limitados y notas de taller.
+        Nada de spam, palabra de perfumista.
+      </p>
+      <form id="form-boletin" novalidate>
+        <input type="email" id="correo-boletin" name="correo" placeholder="tu@correo.com"
+               aria-label="Tu correo electrónico" autocomplete="email" required>
+        <button class="boton" type="submit" id="btn-boletin">Suscribirme</button>
+      </form>
+      <p class="confirmacion" id="confirmacion-boletin" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ pie ============ -->
+<footer class="pie" id="pie">
+  <div class="contenedor">
+    <div class="rejilla">
+      <div>
+        <a class="marca" href="#inicio">
+          <span class="nombre">AURÉLE</span>
+          <span class="eslogan">Maison de Parfum</span>
+        </a>
+        <p class="bloque">Perfumería de autor desde 1998.<br>Calle del Viento 14, El Carmen.<br>Valencia, España.</p>
+        <p class="bloque">Lun–Sáb · 10:00–20:00<br>hola@aurele.es · +34 960 000 000</p>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <ul>
+          <li><a href="#coleccion">Catálogo completo</a></li>
+          <li><a href="#coleccion">Novedades</a></li>
+          <li><a href="#casa">Nuestra casa</a></li>
+          <li><a href="#opiniones">Opiniones</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="#pie">Envíos y entregas</a></li>
+          <li><a href="#pie">Devoluciones</a></li>
+          <li><a href="#pie">Preguntas frecuentes</a></li>
+          <li><a href="#pie">Guía de tamaño</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:hola@aurele.es">hola@aurele.es</a></li>
+          <li><a href="#pie">Instagram</a></li>
+          <li><a href="#pie">Facebook</a></li>
+          <li><a href="#pie">Pinterest</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pagos">
+      <div class="fila">
+        <span>© 2026 Maison Auréle · Página de demostración</span>
+        <span>Visa · Mastercard · AMEX · PayPal · Bizum</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ cajón del carrito ============ -->
+<div class="velo" id="velo"></div>
+<aside class="cajon-carrito" id="cajon-carrito" role="dialog" aria-modal="true" aria-label="Carrito de compras">
+  <div class="cajon-cabeza">
+    <h2>Tu carrito</h2>
+    <button class="cerrar" id="cerrar-carrito" aria-label="Cerrar carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="envio-meta" id="envio-meta"></div>
+  <ul class="articulos" id="lista-carrito"></ul>
+  <div class="cajon-pie">
+    <div class="total">
+      <span class="toml">Total</span>
+      <b id="total-carrito">0 €</b>
+    </div>
+    <button class="boton" id="tramitar" style="width:100%">Tramitar pedido</button>
+    <p class="notita" id="notita-impuestos">Impuestos incluidos. Pagos seguros con cifrado TLS.</p>
+  </div>
+</aside>
+
+<!-- ============ ficha de producto (modal) ============ -->
+<div class="ficha" id="ficha" role="dialog" aria-modal="true" aria-labelledby="ficha-nombre">
+  <div class="hoja" id="ficha-hoja">
+    <div class="ficha-escena" id="ficha-escena">
+      <button class="ficha-cerrar" id="cerrar-ficha" aria-label="Cerrar ficha de producto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke-linecap="round"/></svg>
+      </button>
+      <div id="ficha-frasco"></div>
+    </div>
+    <div class="ficha-datos">
+      <div>
+        <span class="ceja" id="ficha-familia"></span>
+        <h2 id="ficha-nombre"></h2>
+        <p class="valoracion" id="ficha-valoracion" style="margin-top:6px"></p>
+      </div>
+      <p class="resena" id="ficha-resena"></p>
+      <dl class="piramide" id="ficha-piramide"></dl>
+      <div class="ficha-meta" id="ficha-meta"></div>
+      <div class="compra-ficha">
+        <div class="sel-tamanos" id="ficha-tamanos" role="group" aria-label="Elegir tamaño"></div>
+        <span class="precio-ficha" id="ficha-precio"></span>
+      </div>
+      <button class="boton" id="ficha-añadir" style="margin-top:12px">Añadir al carrito</button>
+      <p class="notita">En tu pedido encontrarás también una muestra del tamaño que quieras, sin coste.</p>
+    </div>
+  </div>
+</div>
+
+<div class="tostada" id="tostada" role="status" aria-live="polite"></div>
+<noscript><p style="text-align:center;padding:24px">Activa JavaScript para ver el catálogo interactivo.</p></noscript>
+
+<script>
+"use strict";
+
+/* =================== datos de la colección =================== */
+const PRODUCTOS = [
+  {
+    id: "aurora-nocturna",
+    nombre: "Aurora Nocturna",
+    familia: "Oriental",
+    liquor1: "#c07a24", liquor2: "#6f3c07", tapon: "alta",
+    frase: "Ámbar, incienso y vainilla de Madagascar",
+    descripcion: "Cálida y envolvente, abre con un destello especiado y se asienta en una piel de ámbar. Es nuestra fragancia más pedida para las noches largas.",
+    larga: "Aurora Nocturna nace de un ámbar base que reposa doce meses antes de mezclarse. El incienso entra en silencio y la vainilla de Madagascar, comprada en origen a una familia recolectora, redondea el fondo sin convertirlo en dulce. Un perfume de estación: para la entrada de casa, para el primer frío, para quien prefiere dejarse recordar.",
+    notas: {
+      "Salida": "Bergamota de Calabria · Pimienta rosa",
+      "Corazón": "Incienso de Omán · Jazmín sambac",
+      "Fondo": "Ámbar gris · Vainilla de Madagascar · Oud"
+    },
+    intensidad: "Eau de Parfum · 20 %",
+    duracion: "10–12 h",
+    precios: { "30": 68, "50": 95, "100": 138 },
+    etiquetas: ["Best seller"],
+    estrellas: 5,
+    votos: 212
+  },
+  {
+    id: "jardin-de-abril",
+    nombre: "Jardín de Abril",
+    familia: "Floral",
+    liquor1: "#d98ba0", liquor2: "#a54e68", tapon: "redonda",
+    frase: "Peonía fresca sobre almizcle blanco",
+    descripcion: "El jardín de la casa de mis abuelos: peonía recién cortada, pera temprana y un almizcle limpio que huele a planchado de domingo.",
+    larga: "Es la fragancia con la que más gente empieza en Auréle, y por la que más vuelve. Logramos una peonía que no suena a jabón concentrando su trabajo en las primeras horas: la pera aporta el jugo, la rosa de Grasse aporta la flor y el almizcle blanco de fondo ordena todo sin restar luz. Perfecta para regalar sin miedo y para quedarse.",
+    notas: {
+      "Salida": "Pera temprana · Grosella",
+      "Corazón": "Peonía · Rosa damascena · Fresia",
+      "Fondo": "Almizcle blanco · Madera de cachemira"
+    },
+    intensidad: "Eau de Parfum · 15 %",
+    duracion: "6–8 h",
+    precios: { "30": 62, "50": 88, "100": 126 },
+    etiquetas: ["Nueva"],
+    estrellas: 5,
+    votos: 98
+  },
+  {
+    id: "terraza-de-limon",
+    nombre: "Terraza de Limón",
+    familia: "Cítrico",
+    liquor1: "#e4be52", liquor2: "#b98b1d", tapon: "plana",
+    frase: "Limón siciliano, neroli y té verde",
+    descripcion: "La primera hora del día en una terraza del Mediterráneo: cáscara de limón brillante, un azul de neroli y tablas calientes al fondo.",
+    larga: "Destilamos el limón siciliano en la misma región de donde viene la fruta, lo que mantiene intacta la chispa de la cáscara. El té verde aporta un aire fresco que seca rápido en la piel y el cedro demorado sujeta la composición sin volumen extra. Refrescante de verdad, sin caer en el refresco de supermercado.",
+    notas: {
+      "Salida": "Limón siciliano · Hierbabuena",
+      "Corazón": "Neroli · Té verde · Flor de azahar",
+      "Fondo": "Cedro del Atlas · Almizcle limpio"
+    },
+    intensidad: "Eau de Toilette · 12 %",
+    duracion: "5–6 h",
+    precios: { "30": 54, "50": 76, "100": 108 },
+    etiquetas: [],
+    estrellas: 4,
+    votos: 64
+  },
+  {
+    id: "bosque-de-cedro",
+    nombre: "Bosque de Cedro",
+    familia: "Amaderado",
+    liquor1: "#8b9a63", liquor2: "#55663a", tapon: "alta",
+    frase: "Cedro del Atlas, vetiver y cardamomo",
+    descripcion: "Madera seca, tierra mojada y una especia que arde sin humo. Elegante de día y de noche; el que se convierte en firma personal.",
+    larga: "Nuestro amaderado más versátil. Destilamos el vetiver, inmediatamente después de su cosecha, para conservar su carácter — suelo húmedo y raíces — y lo sentamos sobre un cedro limpio. El cardamomo verde abre un corredor fresco que sorprende a quien espera un perfume «de arboleda» con las puertas cerradas.",
+    notas: {
+      "Salida": "Cardamomo verde · Bergamota",
+      "Corazón": "Cedro del Atlas · Vetiver",
+      "Fondo": "Cuero suave · Almizcle seco"
+    },
+    intensidad: "Eau de Parfum · 18 %",
+    duracion: "8–10 h",
+    precios: { "30": 68, "50": 92, "100": 134 },
+    etiquetas: [],
+    estrellas: 5,
+    votos: 131
+  },
+  {
+    id: "rosa-del-desierto",
+    nombre: "Rosa del Desierto",
+    familia: "Oriental",
+    liquor1: "#c26e7b", liquor2: "#7e3d4e", tapon: "redonda",
+    frase: "Rosa damascena, azafrán y oud",
+    descripcion: "Una rosa con carácter y polvo de camellos: azafrán, sándalo y oud maduro. Literaria, de noche, para ritos importantes.",
+    larga: "La hacemos con un rendimiento bajo de rosa damascena cosechada al amanecer y azafrán español, que sube la temperatura sin caramelizar. El fondo es un oud limado durante meses para que respire: no es un golpe de madera, es una estancia, como entrar en un caravanserai antiguo.",
+    notas: {
+      "Salida": "Azafrán · Ambreta",
+      "Corazón": "Rosa damascena · Sándalo",
+      "Fondo": "Oud madurado · Almizcle"
+    },
+    intensidad: "Extrait de Parfum · 22 %",
+    duracion: "12+ h",
+    precios: { "30": 72, "50": 98, "100": 142 },
+    etiquetas: ["Best seller"],
+    estrellas: 5,
+    votos: 177
+  },
+  {
+    id: "brisa-mediterranea",
+    nombre: "Brisa Mediterránea",
+    familia: "Fresco",
+    liquor1: "#8fb0cc", liquor2: "#4f7896", tapon: "plana",
+    frase: "Sal marina, toronja y lavanda silvestre",
+    descripcion: "Aire de playa de abril, sin sol tórrido: sal, cítrico hesperidio y un verde de lavanda sin rastro de gel de baño.",
+    larga: "Inspirada en las mañanas de playa fuera de temporada: la sal y la acidez viva de la toronja abren un cielo luminoso, y la lavanda silvestre — más aire que flor — le da una estela limpia y natural. Es la fragancia que recomiendan quienes no se \u00abperfuman\u00bb: la que se lleva sin darse cuenta.",
+    notas: {
+      "Salida": "Toronja · Sal marina",
+      "Corazón": "Lavanda silvestre · Salvia sclarea",
+      "Fondo": "Musgo de roble · Ámbar gris suave"
+    },
+    intensidad: "Eau de Toilette · 12 %",
+    duracion: "5–6 h",
+    precios: { "30": 56, "50": 78, "100": 112 },
+    etiquetas: [],
+    estrellas: 4,
+    votos: 52
+  },
+  {
+    id: "humo-y-cuero",
+    nombre: "Humo y Cuero",
+    familia: "Amaderado",
+    liquor1: "#6f5a49", liquor2: "#42332a", tapon: "alta",
+    frase: "Cuero, incienso y pachulí",
+    descripcion: "Una biblioteca con memoria de caballeriza: cuero ahumado, incienso litúrgico, pachulí seco. Misterio de ciudad.",
+    larga: "Nuestro aroma más nocturno y más discutido, y el favorito de los que odian los perfumes dulces. Ahumamos la benzoína con madera de olivo (a la manera antigua), vestimos el conjunto con un cuero suave y dejamos que el pachulí de tierra sostenga la composición. No entra por el pasillo: se queda con quien lo lleva hasta la madrugada.",
+    notas: {
+      "Salida": "Cardamomo negro · Ciprés",
+      "Corazón": "Cuero suave · Incienso litúrgico",
+      "Fondo": "Pachulí seco · Vetiver ahumado · Benzoina ahumada"
+    },
+    intensidad: "Eau de Parfum · 20 %",
+    duracion: "10–12 h",
+    precios: { "30": 74, "50": 102, "100": 148 },
+    etiquetas: [],
+    estrellas: 4,
+    votos: 89
+  },
+  {
+    id: "nectar-del-alba",
+    nombre: "Néctar del Alba",
+    familia: "Floral",
+    liquor1: "#e8a94e", liquor2: "#b87717", tapon: "redonda",
+    frase: "Mandarina, flor de azahar y miel",
+    descripcion: "Dulzura de una floración temprana: mandarina de primavera con flor de azahar y unas gotas de miel que la amarran.",
+    larga: "La flor de azahar se destilla en las primeras 24 horas, así que la recogemos y destilamos el mismo día. La mandarina aporta el pulso diurno y la miel de azahar — tres gotas por lote — da el toque dorado. Huele a la primera luz del día: brillante, nunca pegajosa.",
+    notas: {
+      "Salida": "Mandarina de primavera · Naranja dulce",
+      "Corazón": "Flor de azahar · Ylang-ylang",
+      "Fondo": "Miel de azahar · Almizcle dorado"
+    },
+    intensidad: "Eau de Parfum · 16 %",
+    duracion: "7–9 h",
+    precios: { "30": 60, "50": 84, "100": 120 },
+    etiquetas: ["Nueva"],
+    estrellas: 5,
+    votos: 143
+  }
+];
+
+const FAMILIAS = ["Todas", "Floral", "Amaderado", "Cítrico", "Oriental", "Fresco"];
+const UMBRAL_ENVIO = 90;
+const CLAVE_GUARDADO = "aurele-carrito-v1";
+
+const formatoEuros = new Intl.NumberFormat("es-ES", {
+  style: "currency", currency: "EUR", maximumFractionDigits: 0
+});
+
+/* =================== utilidades =================== */
+const $ = (sel) => document.querySelector(sel);
+
+function escapar(texto){ return String(texto); } // contenido controlado por nosotros
+
+/* =================== SVG del frasco =================== */
+function svgFrasco(p, ctx, clase){
+  const uid = `${p.id}-${ctx}`;
+  let tapon = "";
+  if (p.tapon === "alta"){
+    tapon = `<rect x="47" y="0" width="26" height="26" rx="4" fill="url(#oro)"/>
+             <rect x="47" y="21" width="26" height="3" fill="#6d5321" opacity=".55"/>`;
+  } else if (p.tapon === "redonda"){
+    tapon = `<circle cx="60" cy="15" r="13" fill="url(#oro)"/>
+             <circle cx="60" cy="15" r="13" fill="none" stroke="#6d5321" stroke-opacity=".4"/>
+             <rect x="52" y="24" width="16" height="4" fill="#6d5321" opacity=".55"/>`;
+  } else {
+    tapon = `<rect x="44" y="10" width="32" height="14" rx="2" fill="url(#oro)"/>
+             <rect x="44" y="21" width="32" height="3" fill="#6d5321" opacity=".5"/>`;
+  }
+  const gran = ctx === "hero" || ctx === "ficha";
+  const etiqueta = gran ? `
+      <rect x="40" y="128" width="40" height="40" rx="2" fill="#f7f3ec" opacity=".94"/>
+      <line x1="44" y1="132" x2="76" y2="132" stroke="#8a6d2f" stroke-width="1"/>
+      <text x="60" y="146" text-anchor="middle" font-family="Georgia, serif" font-size="7" letter-spacing="1" fill="#1c1713">AURÉLE</text>
+      <text x="60" y="156" text-anchor="middle" font-family="Georgia, serif" font-size="4.6" font-style="italic" fill="#6b6158">${p.nombre}</text>
+      <text x="60" y="164" text-anchor="middle" font-family="Georgia, serif" font-size="4" fill="#8a6d2f">${p.familia.toUpperCase()}</text>` : `
+      <rect x="42" y="132" width="36" height="32" rx="2" fill="#f7f3ec" opacity=".94"/>
+      <line x1="46" y1="136" x2="74" y2="136" stroke="#8a6d2f" stroke-width="1"/>
+      <text x="60" y="148" text-anchor="middle" font-family="Georgia, serif" font-size="6.4" letter-spacing="1" fill="#1c1713">AURÉLE</text>
+      <text x="60" y="158" text-anchor="middle" font-family="Georgia, serif" font-size="4.4" font-style="italic" fill="#6b6158">${p.nombre}</text>`;
+  return `
+  <svg viewBox="0 0 120 210" ${clase ? `class="${clase}"` : ""} role="img"
+       aria-label="Frasco de ${p.nombre}">
+    <defs>
+      <linearGradient id="liq-${uid}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="${p.liquor1}"/>
+        <stop offset="1" stop-color="${p.liquor2}"/>
+      </linearGradient>
+      <linearGradient id="cristal-${uid}" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#ffffff" stop-opacity=".55"/>
+        <stop offset=".5" stop-color="#ffffff" stop-opacity=".07"/>
+        <stop offset="1" stop-color="#4a3f35" stop-opacity=".14"/>
+      </linearGradient>
+    </defs>
+    ${tapon}
+    <rect x="53" y="27" width="14" height="14" fill="#d9cfbf" stroke="#8a6d2f" stroke-opacity=".4"/>
+    <rect x="30" y="41" width="60" height="160" rx="12"
+          fill="url(#cristal-${uid})" stroke="#40382e" stroke-width="1.4" stroke-opacity=".5"/>
+    <rect x="31.6" y="122" width="56.8" height="77" rx="10.5" fill="url(#liq-${uid})"/>
+    <ellipse cx="60" cy="123.5" rx="27" ry="4" fill="#ffffff" opacity=".18"/>
+    <rect x="35.5" y="48" width="5.5" height="118" rx="2.75" fill="#ffffff" opacity=".38"/>
+    <rect x="80" y="52" width="2.6" height="110" rx="1.3" fill="#ffffff" opacity=".16"/>
+    <rect x="31" y="42" width="58" height="1.6" fill="#ffffff" opacity=".5"/>
+    ${etiqueta}
+  </svg>`;
+}
+
+/* =================== estrellas =================== */
+function svgEstrellas(n){
+  let s = "";
+  for (let i = 0; i < 5; i++){
+    const llena = i < n;
+    s += `<svg viewBox="0 0 24 24" aria-hidden="true" fill="${llena ? "currentColor" : "none"}"
+        stroke="currentColor" stroke-width="1.4" opacity="${llena ? 1 : .35}">
+      <path d="m12 3 2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8L12 3Z" stroke-linejoin="round"/>
+    </svg>`;
+  }
+  return s;
+}
+
+/* =================== tarjeta de producto =================== */
+function tarjetaProducto(p){
+  const etiquetas = (p.etiquetas || []).map(t =>
+    `<span class="etiqueta ${t === "Best seller" ? "oro" : ""}">${t}</span>`).join("");
+  return `
+  <article class="tarjeta por-ver" data-id="${p.id}">
+    <div class="escena">
+      <div class="etiquetas" aria-hidden="true">${etiquetas}</div>
+      <span class="familia">${p.familia}</span>
+      ${svgFrasco(p, "tarjeta", "frasco")}
+    </div>
+    <div class="info">
+      <h3>${p.nombre}</h3>
+      <p class="notas">${p.frase}</p>
+      <blockquote class="resena" style="border:none;font-style:normal">${p.descripcion}</blockquote>
+      <p class="valoracion" aria-label="Valoración ${p.estrellas} de 5, ${p.votos} opiniones">
+        <span class="estrellas" aria-hidden="true">${svgEstrellas(p.estrellas)}</span>
+        ${p.estrellas}.0 · ${p.votos} reseñas
+      </p>
+      <div class="compra">
+        <div class="tamanos" role="group" aria-label="Elegir tamaño de ${p.nombre}">
+          ${["30","50","100"].map(t =>
+            `<button class="tamano" data-tamano="${t}" aria-pressed="${t === "50"}">${t} ml</button>`).join("")}
+        </div>
+        <div class="linea-precio">
+          <span class="precio" data-precio>${formatoEuros.format(p.precios["50"])}</span>
+          <span class="toml">EDP · Botella de vidrio</span>
+        </div>
+        <button class="boton añadir" data-añadir>Añadir al carrito</button>
+        <button class="toml" data-ver style="text-decoration:underline;text-underline-offset:3px;letter-spacing:.14em">Ver ficha completa</button>
+      </div>
+    </div>
+  </article>`;
+}
+
+/* =================== catálogo y filtros =================== */
+let familiaActual = "Todas";
+
+function renderCatalogo(){
+  const articulos = PRODUCTOS.filter(p =>
+    familiaActual === "Todas" || p.familia === familiaActual);
+  const catalogo = $("#catalogo");
+  if (!articulos.length){
+    catalogo.innerHTML = `<p class="vacio" role="status">No hay fragancias en esta familia todavía — próximamente.</p>`;
+    return;
+  }
+  catalogo.innerHTML = articulos.map(tarjetaProducto).join("");
+
+  catalogo.querySelectorAll(".tarjeta").forEach(tarjeta => {
+    const id = tarjeta.dataset.id;
+    const p = PRODUCTOS.find(x => x.id === id);
+
+    tarjeta.querySelectorAll(".tamano").forEach(b => {
+      b.addEventListener("click", () => {
+        tarjeta.querySelectorAll(".tamano").forEach(x => x.setAttribute("aria-pressed", "false"));
+        b.setAttribute("aria-pressed", "true");
+        tarjeta.querySelector("[data-precio]").textContent =
+          formatoEuros.format(p.precios[b.dataset.tamano]);
+      });
+    });
+    tarjeta.querySelector("[data-añadir]").addEventListener("click", () => {
+      const sel = tarjeta.querySelector('.tamano[aria-pressed="true"]').dataset.tamano;
+      añadirAlCarrito(p.id, sel);
+    });
+    tarjeta.querySelector("[data-ver]").addEventListener("click", () => abrirFicha(p.id));
+  });
+  observarPorVer();
+}
+
+function renderFiltros(){
+  $("#filtros").innerHTML = FAMILIAS.map(f =>
+    `<button class="filtro" data-familia="${f}" aria-pressed="${f === familiaActual}">${f}</button>`
+  ).join("");
+  $("#filtros").querySelectorAll(".filtro").forEach(b => {
+    b.addEventListener("click", () => {
+      familiaActual = b.dataset.familia;
+      $("#filtros").querySelectorAll(".filtro")
+        .forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      renderCatalogo();
+    });
+  });
+}
+
+/* =================== carrito =================== */
+let carrito = [];
+try { carrito = JSON.parse(localStorage.getItem(CLAVE_GUARDADO) || "[]"); } catch { carrito = []; }
+
+function guardarCarrito(){
+  try { localStorage.setItem(CLAVE_GUARDADO, JSON.stringify(carrito)); } catch {}
+}
+function productosEnCarrito(){ return carrito.reduce((n, a) => n + a.qty, 0); }
+function subtotalCarrito(){
+  return carrito.reduce((s, a) => {
+    const p = PRODUCTOS.find(x => x.id === a.id);
+    return s + (p ? p.precios[a.tam] * a.qty : 0);
+  }, 0);
+}
+
+function añadirAlCarrito(id, tam){
+  const existente = carrito.find(a => a.id === id && a.tam === tam);
+  if (existente) existente.qty += 1; else carrito.push({ id, tam, qty: 1 });
+  guardarCarrito();
+  renderCarrito();
+  const p = PRODUCTOS.find(x => x.id === id);
+  toast(`${p.nombre} · ${tam} ml añadida al carrito`);
+}
+
+function renderCarrito(){
+  const lista = $("#lista-carrito");
+  const total = subtotalCarrito();
+  const piezas = productosEnCarrito();
+
+  const contador = $("#contador-carrito");
+  contador.textContent = piezas;
+  contador.classList.toggle("oculto", piezas === 0);
+
+  if (!carrito.length){
+    lista.innerHTML = `
+      <li style="padding:48px 8px;text-align:center;color:var(--tinta-3)">
+        <p style="font-style:italic">Tu carrito está vacío.</p>
+        <p style="font-size:12px;margin-top:8px;letter-spacing:.1em">Explora la coleccion y encuentra la tuya.</p>
+      </li>`;
+    $("#tramitar").disabled = true;
+  } else {
+    $("#tramitar").disabled = false;
+    lista.innerHTML = carrito.map((a, i) => {
+      const p = PRODUCTOS.find(x => x.id === a.id);
+      return `
+      <li class="articulo">
+        <div class="mini" aria-hidden="true">${svgFrasco(p, "mini")}</div>
+        <div class="datos">
+          <p class="nombre">${p.nombre}</p>
+          <p class="variante">${p.familia} · ${a.tam} ml · ${p.intensidad}</p>
+          <div class="controles">
+            <span class="cantidad">
+              <button data-menos="${i}" aria-label="Quitar una unidad de ${p.nombre}">−</button>
+              <span aria-live="polite">${a.qty}</span>
+              <button data-mas="${i}" aria-label="Añadir una unidad de ${p.nombre}">+</button>
+            </span>
+            <button class="quitar" data-quitar="${i}">Quitar</button>
+          </div>
+        </div>
+        <span class="importe">${formatoEuros.format(p.precios[a.tam] * a.qty)}</span>
+      </li>`;
+    }).join("");
+
+    lista.querySelectorAll("[data-mas]").forEach(b => b.addEventListener("click", () => {
+      carrito[+b.dataset.mas].qty += 1; guardarCarrito(); renderCarrito();
+    }));
+    lista.querySelectorAll("[data-menos]").forEach(b => b.addEventListener("click", () => {
+      const n = +b.dataset.menos;
+      carrito[n].qty -= 1;
+      if (carrito[n].qty <= 0) carrito.splice(n, 1);
+      guardarCarrito(); renderCarrito();
+    }));
+    lista.querySelectorAll("[data-quitar]").forEach(b => b.addEventListener("click", () => {
+      carrito.splice(+b.dataset.quitar, 1); guardarCarrito(); renderCarrito();
+    }));
+  }
+
+  $("#total-carrito").textContent = formatoEuros.format(total);
+
+  const meta = $("#envio-meta");
+  const falta = Math.max(UMBRAL_ENVIO - total, 0);
+  const pct = Math.min(total / UMBRAL_ENVIO * 100, 100);
+  meta.innerHTML = `Te faltan <strong style="color:var(--tinta)">${formatoEuros.format(falta)}</strong> para el envío gratuito
+    <span class="barra" aria-hidden="true"><i style="width:${pct}%"></i></span>`;
+  if (falta === 0){
+    meta.innerHTML = `<strong style="color:var(--oro)">Envío gratuito desbloqueado</strong>
+      <span class="barra" aria-hidden="true"><i style="width:100%"></i></span>`;
+  }
+}
+
+/* =================== cajón del carrito =================== */
+function abrirCarrito(){
+  $("#velo").classList.add("visible");
+  $("#cajon-carrito").classList.add("abierto");
+  document.body.style.overflow = "hidden";
+  $("#cerrar-carrito").focus();
+}
+function cerrarCarrito(){
+  $("#velo").classList.remove("visible");
+  $("#cajon-carrito").classList.remove("abierto");
+  document.body.style.overflow = "";
+  $("#abrir-carrito").focus();
+}
+
+/* =================== ficha de producto =================== */
+let productoFicha = null;
+let tamanoFicha = "50";
+let focoPrevio = null;
+
+function abrirFicha(id){
+  focoPrevio = document.activeElement;
+  const p = PRODUCTOS.find(x => x.id === id);
+  productoFicha = p; tamanoFicha = "50";
+
+  $("#ficha-escena").innerHTML = `
+    <button class="ficha-cerrar" id="cerrar-ficha" aria-label="Cerrar ficha de producto">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke-linecap="round"/></svg>
+    </button>
+    <div id="ficha-frasco">${svgFrasco(p, "ficha")}</div>`;
+  $("#ficha-familia").textContent = `${p.familia} · ${p.intensidad}`;
+  $("#ficha-nombre").textContent = p.nombre;
+  $("#ficha-valoracion").innerHTML =
+    `<span class="estrellas" aria-hidden="true">${svgEstrellas(p.estrellas)}</span> ${p.estrellas}.0 · ${p.votos} reseñas · ${p.duracion}`;
+  $("#ficha-resena").textContent = p.larga;
+  $("#ficha-piramide").innerHTML = Object.entries(p.notas).map(([k, v]) =>
+    `<div class="paso"><dt>${k}</dt><dd>${v}</dd></div>`).join("");
+  $("#ficha-meta").innerHTML =
+    `<span>Eau con responsable</span><span>Vegano · Sin parabenos</span><span>Lote numerado</span>`;
+  $("#ficha-tamanos").innerHTML = ["30","50","100"].map(t =>
+    `<button class="tamano" data-tamano="${t}" aria-pressed="${t === tamanoFicha}">${t} ml</button>`).join("");
+  $("#ficha-precio").textContent = formatoEuros.format(p.precios[tamanoFicha]);
+
+  $("#ficha-tamanos").querySelectorAll(".tamano").forEach(b => {
+    b.addEventListener("click", () => {
+      tamanoFicha = b.dataset.tamano;
+      $("#ficha-tamanos").querySelectorAll(".tamano").forEach(x => x.setAttribute("aria-pressed","false"));
+      b.setAttribute("aria-pressed", "true");
+      $("#ficha-precio").textContent = formatoEuros.format(p.precios[tamanoFicha]);
+    });
+  });
+  $("#ficha-añadir").onclick = () => añadirAlCarrito(p.id, tamanoFicha);
+  $("#cerrar-ficha").addEventListener("click", cerrarFicha);
+
+  $("#velo").classList.add("visible");
+  $("#ficha").classList.add("visible");
+  document.body.style.overflow = "hidden";
+  $("#ficha").querySelector(".ficha-cerrar").focus();
+}
+function cerrarFicha(){
+  $("#ficha").classList.remove("visible");
+  $("#velo").classList.remove("visible");
+  document.body.style.overflow = "";
+  if (focoPrevio) focoPrevio.focus();
+}
+
+/* =================== tostada =================== */
+let tostadaTiempo = null;
+function toast(mensaje){
+  const t = $("#tostada");
+  t.textContent = mensaje;
+  t.classList.add("visible");
+  clearTimeout(tostadaTiempo);
+  tostadaTiempo = setTimeout(() => t.classList.remove("visible"), 2600);
+}
+
+/* =================== arte del héroe y de la casa =================== */
+function arteHero(){
+  const f1 = svgFrasco(PRODUCTOS[0], "hero");
+  const f2 = svgFrasco(PRODUCTOS[1], "hero");
+  const f3 = svgFrasco(PRODUCTOS[4], "hero");
+  $("#arte-hero").innerHTML = `
+    <div class="aura"></div>
+    <div class="aro"></div>
+    <span class="especia" style="top:14%;left:22%"></span>
+    <span class="especia" style="top:24%;right:16%;width:7px;height:7px"></span>
+    <span class="especia" style="bottom:20%;left:12%;width:7px;height:7px"></span>
+    <span class="especia" style="top:44%;right:8%"></span>
+    <span class="especia" style="bottom:34%;right:24%"></span>
+    <div class="frasco-heroe" style="left:6%;height:210px;z-index:1">${f2}</div>
+    <div class="frasco-heroe" style="left:26%;height:300px;z-index:3">${f1}</div>
+    <div class="frasco-heroe" style="right:14%;height:240px;z-index:2;bottom:14px">${f3}</div>`;
+
+  const mesa = svgFrasco(PRODUCTOS[0], "casa");
+  const mesa2 = svgFrasco(PRODUCTOS[3], "casa");
+  $("#arte-casa").innerHTML = `
+    <span class="esquina tl"></span><span class="esquina tr"></span>
+    <span class="esquina bl"></span><span class="esquina br"></span>
+    <div style="display:flex;gap:24px;align-items:flex-end">
+      <div style="height:200px">${mesa2}</div>
+      <div style="height:260px">${mesa}</div>
+    </div>`;
+}
+
+/* =================== aparición al hacer scroll =================== */
+let observador = null;
+function observarPorVer(){
+  if (!("IntersectionObserver" in window)){
+    document.querySelectorAll(".por-ver").forEach(el => el.classList.add("visible"));
+    return;
+  }
+  if (!observador){
+    observador = new IntersectionObserver(entradas => {
+      entradas.forEach(e => {
+        if (e.isIntersecting){ e.target.classList.add("visible"); observador.unobserve(e.target); }
+      });
+    }, { threshold: .12, rootMargin: "0px 0px -40px" });
+  }
+  document.querySelectorAll(".por-ver:not(.visible)").forEach(el => observador.observe(el));
+}
+
+/* =================== eventos globales =================== */
+$("#abrir-carrito").addEventListener("click", abrirCarrito);
+$("#cerrar-carrito").addEventListener("click", cerrarCarrito);
+$("#velo").addEventListener("click", () => {
+  if ($("#ficha").classList.contains("visible")) cerrarFicha();
+  else cerrarCarrito();
+});
+$("#tramitar").addEventListener("click", () => {
+  toast("Esta tienda es una demostración — aquí iría el pago seguro.");
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape"){
+    if ($("#ficha").classList.contains("visible")) cerrarFicha();
+    else if ($("#cajon-carrito").classList.contains("abierto")) cerrarCarrito();
+  }
+});
+window.addEventListener("scroll", () => {
+  $("#cabecera").classList.toggle("sombra", window.scrollY > 12);
+}, { passive: true });
+
+$("#form-boletin").addEventListener("submit", e => {
+  e.preventDefault();
+  const correo = $("#correo-boletin");
+  const msg = $("#confirmacion-boletin");
+  if (!correo.checkValidity()){
+    msg.style.color = "var(--rojo)";
+    msg.textContent = "Escribe un correo válido para poder enviarte la carta.";
+    correo.focus();
+    return;
+  }
+  msg.style.color = "var(--oro)";
+  msg.textContent = "¡Bienvenida al Círculo Auréle! Revisa tu correo para confirmar la suscripción.";
+  correo.value = "";
+});
+
+/* =================== arranque =================== */
+renderFiltros();
+renderCatalogo();
+renderCarrito();
+arteHero();
+observarPorVer();
+</script>
+</body>
+</html>
